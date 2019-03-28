@@ -8,7 +8,7 @@ public class FishControl : MonoBehaviour {
     public int jumpHeight = 10;
     public GameObject player;
     private bool flipX = false;
-    private bool grounded = true;
+    public bool grounded = true;
 	// Use this for initialization
 	void Start () {
         grounded = true;
@@ -44,5 +44,12 @@ public class FishControl : MonoBehaviour {
             grounded = false;
         }
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag==("Ground"))
+        {
+            grounded = true;
+        }
     }
 }
