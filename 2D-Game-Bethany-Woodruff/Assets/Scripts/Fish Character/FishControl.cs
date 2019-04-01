@@ -28,7 +28,7 @@ public class FishControl : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
             GetComponent<SpriteRenderer>().flipX = false;
         }
-        if(Input.GetKey(KeyCode.W))
+        /*if(Input.GetKey(KeyCode.W))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed,GetComponent<Rigidbody2D>().velocity.x);
             GetComponent<SpriteRenderer>().flipX = false;
@@ -37,7 +37,7 @@ public class FishControl : MonoBehaviour {
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().velocity.x);
             GetComponent<SpriteRenderer>().flipX = false;
-        }
+        }*/
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,jumpHeight);
@@ -48,6 +48,10 @@ public class FishControl : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag==("Ground"))
+        {
+            grounded = true;
+        }
+        if(collision.collider.tag == ("JellyFish"))
         {
             grounded = true;
         }
