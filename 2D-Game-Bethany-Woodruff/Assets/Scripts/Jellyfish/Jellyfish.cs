@@ -6,15 +6,15 @@ public class Jellyfish : MonoBehaviour {
 
     private float yScale;
     private bool upOrDown;
-    public float maxY=.2f;
-    public float minY=.35f;
-    public float speed = .001f;
+    private float speed = .002f;
+    private float minY = .95f;
+    private float maxY = 1.05f;
 
 	// Use this for initialization
 	void Start () {
-        yScale = 0.29707f;
-        minY = .2f;
-        maxY = .35f;
+        yScale = 1f;
+        minY = .95f;
+        maxY = 1.05f;
         
     }
 	
@@ -37,7 +37,7 @@ public class Jellyfish : MonoBehaviour {
             }
                     
          }
-        transform.localScale= new Vector3 (0.29707f, yScale,0.29707f);
+        transform.localScale= new Vector3 (1f, yScale, 1f);
 		
 	}
 }
