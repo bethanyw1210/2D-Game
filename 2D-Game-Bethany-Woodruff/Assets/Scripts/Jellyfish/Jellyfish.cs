@@ -5,16 +5,22 @@ using UnityEngine;
 public class Jellyfish : MonoBehaviour {
 
     private float yScale;
+    private float xScale;
     private bool upOrDown;
-    private float speed = .002f;
+    private float speed = .0015f;
     private float minY = .95f;
     private float maxY = 1.05f;
+    private float minX = .95f;
+    private float maxX = 1.05f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         yScale = 1f;
         minY = .95f;
         maxY = 1.05f;
+        xScale = 1f;
+        minX = .95f;
+        maxX = 1.05f;
         
     }
 	
@@ -27,6 +33,11 @@ public class Jellyfish : MonoBehaviour {
             {
                 upOrDown = true;
             }
+            xScale += speed;
+            if(xScale > maxX)
+            {
+                upOrDown = true;
+            }
         }
         if(upOrDown == true)
         {
@@ -35,9 +46,13 @@ public class Jellyfish : MonoBehaviour {
             {
                 upOrDown = false;
             }
-                    
+            xScale -= speed;
+            if(xScale < minX)
+            {
+                upOrDown = false;
+            }
          }
-        transform.localScale= new Vector3 (1f, yScale, 1f);
+        transform.localScale= new Vector3 (xScale, yScale, 1f);
 		
 	}
 }
