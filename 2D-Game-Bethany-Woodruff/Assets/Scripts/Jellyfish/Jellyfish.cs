@@ -13,6 +13,8 @@ public class Jellyfish : MonoBehaviour {
     private float minX = .95f;
     private float maxX = 1.05f;
 
+
+
     // Use this for initialization
     void Start () {
         yScale = 1f;
@@ -21,6 +23,8 @@ public class Jellyfish : MonoBehaviour {
         xScale = 1f;
         minX = .95f;
         maxX = 1.05f;
+
+
         
     }
 	
@@ -53,6 +57,13 @@ public class Jellyfish : MonoBehaviour {
             }
          }
         transform.localScale= new Vector3 (xScale, yScale, 1f);
-		
 	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+    }
 }
