@@ -15,13 +15,13 @@ public class EnemyMovement : MonoBehaviour {
         else
             transform.Translate(-Vector2.right * speed * Time.deltaTime);
 
-        if(transform.position.x > 30f)
+        if(transform.position.x > 20f)
         {
             dirRight = false;
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        if(transform.position.x <= -30f)
+        if(transform.position.x <= -20f)
         {
             dirRight = true;
             GetComponent<SpriteRenderer>().flipX = false;
