@@ -45,6 +45,16 @@ public class FishControl : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,jumpHeight);
             grounded = false;
         }
-
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == ("Ground"))
+        {
+            grounded = true;
+        }
+        if(collision.collider.tag == ("JellyFish"))
+        {
+            grounded = true;
+        }
     }
 }
