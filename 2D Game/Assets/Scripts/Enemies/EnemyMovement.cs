@@ -8,24 +8,21 @@ public class EnemyMovement : MonoBehaviour {
     public float speed = 5f;
     private bool flipX = false;
 
+    int counter,randomDelay;
+    private void Start()
+    {
+        counter = 1;
+        dirRight = true;
+        randomDelay = Random.Range(10,500);
+        GetComponent<SpriteRenderer>().flipX = false;
+    }
     void Update()
     {
-        if(dirRight)
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        
+        if(randomDelay<=counter)
+        MoveDude();
         else
-            transform.Translate(-Vector2.right * speed * Time.deltaTime);
-
-        if(transform.position.x > 20f)
-        {
-            dirRight = false;
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-
-        if(transform.position.x <= -20f)
-        {
-            dirRight = true;
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
+            counter++;
 
         /*[SerializeField] float swimSpeed = 8f;
         public bool moveRight;
@@ -53,4 +50,24 @@ public class EnemyMovement : MonoBehaviour {
             }
         }*/
     }
+    private void MoveDude()
+    {
+        if(dirRight)
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        else
+            transform.Translate(-Vector2.right * speed * Time.deltaTime);
+
+        if(transform.position.x > 20f)
+        {
+            dirRight = false;
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+
+        if(transform.position.x <= -20f)
+        {
+            dirRight = true;
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+    }
+   
 }

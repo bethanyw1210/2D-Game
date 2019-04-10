@@ -24,7 +24,7 @@ public class JellySize : MonoBehaviour {
         xScale = 1f;
         minX = .95f;
         maxX = 1.05f;
-
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
 
 
     }

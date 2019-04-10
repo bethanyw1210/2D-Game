@@ -52,7 +52,7 @@ public class FishControl : MonoBehaviour {
         {
             grounded = true;
         }
-        if(collision.collider.tag == ("JellyFish"))
+        if(collision.collider.tag == ("Jellyfish"))
         {
             grounded = true;
         }
