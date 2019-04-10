@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main : MonoBehaviour {
-        private float speed = .01f;
+public class MainCamera : MonoBehaviour {
+        public float speed = .03f;
 
         // Use this for initialization
         void Start()

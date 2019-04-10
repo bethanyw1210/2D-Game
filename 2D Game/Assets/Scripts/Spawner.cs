@@ -56,20 +56,12 @@ using UnityEngine;
                 case 9:
                 case 10:
                 case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
                     enemyToMake = GameObject.Find("Shark");
                     Instantiate(enemyToMake,new Vector2(-18,lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);
                     break;
                 case 16:
                 case 17:
                 case 18:
-                case 19:
-                case 20:
-                case 21:
-                case 22:
                     enemyToMake = GameObject.Find("Swordfish");
                     Instantiate(enemyToMake,new Vector2(-18,lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);
                     break;
