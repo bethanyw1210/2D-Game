@@ -164,11 +164,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4589978990895746, guid: a49fb71d0406bb14e9e9a0eece5bb3d7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -22.43
+      value: -24.79
       objectReference: {fileID: 0}
     - target: {fileID: 4589978990895746, guid: a49fb71d0406bb14e9e9a0eece5bb3d7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -12.21
+      value: -11.67
       objectReference: {fileID: 0}
     - target: {fileID: 4589978990895746, guid: a49fb71d0406bb14e9e9a0eece5bb3d7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -193,6 +193,11 @@ Prefab:
     - target: {fileID: 4589978990895746, guid: a49fb71d0406bb14e9e9a0eece5bb3d7, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 58129616112167228, guid: a49fb71d0406bb14e9e9a0eece5bb3d7,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a49fb71d0406bb14e9e9a0eece5bb3d7, type: 2}
@@ -233,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa2a77ce42941741969fc160b4cf241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.03
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1008,9 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ed39597175a36488e974b77a617621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpHeight: 15
-  player: {fileID: 1647981790}
+  player: {fileID: 0}
 --- !u!212 &1647981794
 SpriteRenderer:
   m_ObjectHideFlags: 0

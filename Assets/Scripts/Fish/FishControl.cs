@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FishControl : MonoBehaviour {
 
-    public float moveSpeed = 3;
-    public int jumpHeight = 10;
+    private float moveSpeed = 5;
+    private int jumpHeight = 15;
     public GameObject player;
     private bool flipX = false;
     private bool grounded = true;

@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CleanUpScript : MonoBehaviour {
+/*public class CleanUpScript : MonoBehaviour {
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter (Collider hit)
     {
-        Debug.Log("Success");
-        Destroy(collision.gameObject);
+        if (hit.gameObject.tag == "Jellyfish")
+            Destroy(gameObject.tag == "Jellyfish");
     }
-}
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Jellyfish")
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Jellyfish"));
+        }
+        
+        
+        if(GameObject.Find("Jellyfish"))
+            Destroy(GameObject.Find("Jellyfish"));
+    }
+}*/
