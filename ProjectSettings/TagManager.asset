@@ -8,6 +8,9 @@ TagManager:
   - Jellyfish
   - Fish
   - Enemy
+  - Turtle
+  - School
+  - BubbleGun
   layers:
   - Default
   - TransparentFX
