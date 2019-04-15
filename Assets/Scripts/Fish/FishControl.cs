@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishControl : MonoBehaviour {
+public class FishControl:MonoBehaviour
+{
 
     private float moveSpeed = 5;
     private int jumpHeight = 15;
     public GameObject player;
     private bool flipX = false;
     private bool grounded = true;
+    public Sprite schoolPowerUp, FishCharacter, turtlePowerup, fishPowerUp;
+    private Rigidbody2D pcRigid;
+    private float gravityStore;
+
     // Use this for initialization 
     void Start()
     {
+        FishCharacter = gameObject.GetComponent<SpriteRenderer>().sprite;
         grounded = true;
+        pcRigid = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame 
@@ -28,16 +35,6 @@ public class FishControl : MonoBehaviour {
         if(Input.GetKey(KeyCode.A))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        if(Input.GetKey(KeyCode.W))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed,GetComponent<Rigidbody2D>().velocity.x);
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        if(Input.GetKey(KeyCode.S))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().velocity.x);
             GetComponent<SpriteRenderer>().flipX = false;
         }
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
@@ -56,5 +53,61 @@ public class FishControl : MonoBehaviour {
         {
             grounded = true;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "School")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = schoolPowerUp;
+            Destroy(other.gameObject);
+            StartCoroutine("SchoolFish");
+
+        }
+        //
+        if(other.tag == "BubbleGun")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = fishPowerUp;
+            Destroy(other.gameObject);
+            StartCoroutine("BubbleGun");
+        }
+        //
+        if(other.tag == "Turtle")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = turtlePowerup;
+            Destroy(other.gameObject);
+            StartCoroutine("SeaTurtle");
+        }
+    }
+
+    public IEnumerator SeaTurtle()
+    {
+        gravityStore = pcRigid.GetComponent<Rigidbody2D>().gravityScale;
+        pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        pcRigid.GetComponent<Rigidbody2D>().velocity = new Vector2(pcRigid.GetComponent<Rigidbody2D>().transform.position.x,3);
+        yield return new WaitForSeconds(10f);
+
+        pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+    }
+
+    public IEnumerator SchoolFish()
+    {
+        gravityStore = pcRigid.GetComponent<Rigidbody2D>().gravityScale;
+        pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        pcRigid.GetComponent<Rigidbody2D>().velocity = new Vector2(pcRigid.GetComponent<Rigidbody2D>().transform.position.x,3);
+        yield return new WaitForSeconds(15f);
+
+        pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+    }
+
+    public IEnumerator BubbleGun()
+    {
+       
+        yield return new WaitForSeconds(20f);
+
+        Instantiate("Assets / Prefabs / Bubble Gun Ammo.prefab");
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
     }
 }

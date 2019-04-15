@@ -89,16 +89,6 @@ using UnityEngine;
                     enemyToMake = GameObject.Find("Powerup School");
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
                     break;
-                case 23:
-                    enemyToMake = GameObject.Find("Coin");
-                    Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
-                    print("You collected a coin!");
-                    break;
-                case 24:
-                    enemyToMake = GameObject.Find("Coin");
-                    Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
-                    print("You collected a coin!");
-                    break;
                 default:
                     break;
             }
