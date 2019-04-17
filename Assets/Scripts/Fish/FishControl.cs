@@ -10,9 +10,11 @@ public class FishControl:MonoBehaviour
     public GameObject player;
     private bool flipX = false;
     private bool grounded = true;
-    public Sprite schoolPowerUp, FishCharacter, turtlePowerup, fishPowerUp;
+    public Sprite FishCharacter, turtlePowerup, gunPowerUp;
     private Rigidbody2D pcRigid;
     private float gravityStore;
+    public Transform firePoint;
+    public GameObject projectile;
 
     // Use this for initialization 
     void Start()
@@ -57,17 +59,9 @@ public class FishControl:MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "School")
-        {
-            gameObject.GetComponent<SpriteRenderer>().sprite = schoolPowerUp;
-            Destroy(other.gameObject);
-            StartCoroutine("SchoolFish");
-
-        }
-        //
         if(other.tag == "BubbleGun")
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = fishPowerUp;
+            gameObject.GetComponent<SpriteRenderer>().sprite = gunPowerUp;
             Destroy(other.gameObject);
             StartCoroutine("BubbleGun");
         }
@@ -91,23 +85,16 @@ public class FishControl:MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
     }
 
-    public IEnumerator SchoolFish()
+    /*public IEnumerator BubbleGun()
     {
-        gravityStore = pcRigid.GetComponent<Rigidbody2D>().gravityScale;
-        pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        pcRigid.GetComponent<Rigidbody2D>().velocity = new Vector2(pcRigid.GetComponent<Rigidbody2D>().transform.position.x,3);
-        yield return new WaitForSeconds(15f);
+        if(Input.GetKeyDown(KeyCode.E))
+        Instantiate(projectile,firePoint.position,firePoint.rotation);
 
-        pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
-        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
-    }
-
-    public IEnumerator BubbleGun()
-    {
+        projectile = Resources.Load("Assets/Prefabs/Bubble Gun Ammo.prefab") as GameObject;
        
         yield return new WaitForSeconds(20f);
 
         Instantiate("Assets / Prefabs / Bubble Gun Ammo.prefab");
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
-    }
+    }*/
 }
