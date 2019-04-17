@@ -5,7 +5,7 @@ using UnityEngine;
 
     public class Spawner:MonoBehaviour
     {
-        public float minDistance = 1, maxDistance = 10, lastXPosition, lastYPosition, lastXPosition2, lastYPosition2, edgeDistance = 10f, maxHeight = 30;
+        public float minDistance = 1, maxDistance = 10, lastXPosition, lastYPosition, lastXPosition2, lastYPosition2, edgeDistance = 10f, maxHeight = 50;
         public int jellyfishCount, whichjellyfish, whichBadGuy;
         public int level;
         public GameObject jellyfish1, jellyfish2, jellyfish3, jellyfishToMake, enemyToMake;
@@ -73,10 +73,10 @@ using UnityEngine;
                     enemyToMake = GameObject.Find("Powerup Turtle");
                     Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
                     break;
-                case 5:
+                /*case 5:
                     enemyToMake = GameObject.Find("Powerup School");
                     Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
-                    break;
+                    break;*/
                 case 6:
                     enemyToMake = GameObject.Find("Powerup Bubble Gun");
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
@@ -84,12 +84,6 @@ using UnityEngine;
                 case 7:
                     enemyToMake = GameObject.Find("Powerup Turtle");
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
-                    break;
-                case 8:
-                    enemyToMake = GameObject.Find("Powerup School");
-                    Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
-                    break;
-                default:
                     break;
             }
             if(!(edgeDistance < lastXPosition) && !(-edgeDistance > lastXPosition))

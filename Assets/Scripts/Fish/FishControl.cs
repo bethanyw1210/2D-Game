@@ -27,6 +27,12 @@ public class FishControl:MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
+        if(gameObject.GetComponent<SpriteRenderer>().sprite == turtlePowerup)
+        {
+            Moverupper();
+            print("hello");
+        }
+            
 
         if(Input.GetKey(KeyCode.D))
         {
@@ -41,8 +47,13 @@ public class FishControl:MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,jumpHeight);
-            grounded = false;
+            if(gameObject.GetComponent<SpriteRenderer>().sprite == turtlePowerup)
+                grounded = false;
+            else
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x,jumpHeight);
+                grounded = false;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,15 +87,36 @@ public class FishControl:MonoBehaviour
 
     public IEnumerator SeaTurtle()
     {
+        gameObject.GetComponent<BoxCollider2D>().enabled=false;
         gravityStore = pcRigid.GetComponent<Rigidbody2D>().gravityScale;
-        pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        pcRigid.GetComponent<Rigidbody2D>().velocity = new Vector2(pcRigid.GetComponent<Rigidbody2D>().transform.position.x,3);
-        yield return new WaitForSeconds(10f);
+        gameObject.GetComponent<Rigidbody2D>().velocity=new Vector3(0,0,0);
+        //pcRigid.GetComponent<Rigidbody2D>().gravityScale = 0f;
 
-        pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
+        yield return new WaitForSeconds(8f);
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
-    }
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = turtlePowerup;
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = turtlePowerup;
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
+        pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
+    }
+    public void Moverupper()
+    {
+        if(GameObject.FindGameObjectWithTag("MainCamera").transform.position.y > gameObject.transform.position.y)
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
+        else
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y-.01f,0);
+    }
     /*public IEnumerator BubbleGun()
     {
         if(Input.GetKeyDown(KeyCode.E))

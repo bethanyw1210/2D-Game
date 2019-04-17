@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         counter = 1;
         dirRight = true;
-        randomDelay = Random.Range(10,500);
+        randomDelay = Random.Range(10,100);
         GetComponent<SpriteRenderer>().flipX = false;
     }
     void Update()
