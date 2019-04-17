@@ -22,6 +22,7 @@ public class FishControl:MonoBehaviour
         FishCharacter = gameObject.GetComponent<SpriteRenderer>().sprite;
         grounded = true;
         pcRigid = gameObject.GetComponent<Rigidbody2D>();
+        firePoint = gameObject.GetComponentInChildren<Transform>().name("Bullet");
     }
 
     // Update is called once per frame 
@@ -32,7 +33,8 @@ public class FishControl:MonoBehaviour
             Moverupper();
             print("hello");
         }
-            
+        if(gameObject.GetComponent<SpriteRenderer>().sprite == gunPowerUp && Input.GetKeyDown(KeyCode.W))
+            Instantiate(projectile,firePoint.position,firePoint.rotation);
 
         if(Input.GetKey(KeyCode.D))
         {
@@ -66,6 +68,7 @@ public class FishControl:MonoBehaviour
         {
             grounded = true;
         }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -116,11 +119,18 @@ public class FishControl:MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
         else
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y-.01f,0);
+        if(GameObject.FindGameObjectWithTag("MainCamera").transform.position.x > gameObject.transform.position.x+5)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x+.5f,gameObject.GetComponent<Rigidbody2D>().velocity.y,0);
+        }
+        else if (GameObject.FindGameObjectWithTag("MainCamera").transform.position.x+5 < gameObject.transform.position.x)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x -.5f,gameObject.GetComponent<Rigidbody2D>().velocity.y,0);
+        }
     }
-    /*public IEnumerator BubbleGun()
+    public IEnumerator BubbleGun()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        Instantiate(projectile,firePoint.position,firePoint.rotation);
+
 
         projectile = Resources.Load("Assets/Prefabs/Bubble Gun Ammo.prefab") as GameObject;
        
@@ -128,5 +138,5 @@ public class FishControl:MonoBehaviour
 
         Instantiate("Assets / Prefabs / Bubble Gun Ammo.prefab");
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
-    }*/
+    }
 }

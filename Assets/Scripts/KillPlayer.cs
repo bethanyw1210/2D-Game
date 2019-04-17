@@ -38,7 +38,7 @@ public class KillPlayer : MonoBehaviour {
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         float gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale;
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
         //        yield return new WaitForSeconds(3f);
         gameObject.transform.position = new Vector2(0,GameObject.FindGameObjectWithTag("MainCamera").transform.position.y + 10);
         Debug.Log("Respawn");
@@ -46,6 +46,7 @@ public class KillPlayer : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
         rend.enabled = false;
         yield return new WaitForSeconds(.5f);
+        //gameObject.transform.position = new Vector2(0,GameObject.FindGameObjectWithTag("MainCamera").transform.position.y + 10);
         rend.enabled = true;
         yield return new WaitForSeconds(.5f);
         rend.enabled = false;
