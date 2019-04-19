@@ -9,43 +9,43 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1812301507982570}
+  m_RootGameObject: {fileID: 1572150904320666}
   m_IsPrefabAsset: 1
---- !u!1 &1812301507982570
+--- !u!1 &1572150904320666
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4905636283767986}
-  - component: {fileID: 212910789908003964}
+  - component: {fileID: 4571722375539964}
+  - component: {fileID: 212556691612929400}
   m_Layer: 0
-  m_Name: Bubble Gun Ammo
+  m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4905636283767986
+--- !u!4 &4571722375539964
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812301507982570}
+  m_GameObject: {fileID: 1572150904320666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.384552, y: -17.305998, z: 0}
+  m_LocalPosition: {x: -43.77243, y: -16.118534, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212910789908003964
+--- !u!212 &212556691612929400
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812301507982570}
+  m_GameObject: {fileID: 1572150904320666}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5690a33fe4768fc4baeb0b2979d6522b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f543d24887cd906429c643bf1fcffdd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

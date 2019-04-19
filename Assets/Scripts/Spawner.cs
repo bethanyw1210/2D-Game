@@ -91,11 +91,7 @@ using UnityEngine;
                     GameObject newJellyfish = Instantiate(jellyfishToMake,new Vector2(lastXPosition + Random.Range(0f,8f),lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);
                     lastXPosition = newJellyfish.transform.position.x;
                     lastYPosition = newJellyfish.transform.position.y;
-                
-                
                 }
-               
-                
                 else if(-edgeDistance > lastXPosition)
                 {
                     GameObject newJellyfish = Instantiate(jellyfishToMake,new Vector2(lastXPosition + Random.Range(0f,10f),lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);

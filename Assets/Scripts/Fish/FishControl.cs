@@ -15,6 +15,7 @@ public class FishControl:MonoBehaviour
     private float gravityStore;
     public Transform firePoint;
     public GameObject projectile;
+    public float projectileSpeed = 10f;
 
     // Use this for initialization 
     void Start()
@@ -22,7 +23,7 @@ public class FishControl:MonoBehaviour
         FishCharacter = gameObject.GetComponent<SpriteRenderer>().sprite;
         grounded = true;
         pcRigid = gameObject.GetComponent<Rigidbody2D>();
-        firePoint = gameObject.GetComponentInChildren<Transform>().name("Bullet");
+      
     }
 
     // Update is called once per frame 
@@ -31,10 +32,7 @@ public class FishControl:MonoBehaviour
         if(gameObject.GetComponent<SpriteRenderer>().sprite == turtlePowerup)
         {
             Moverupper();
-            print("hello");
         }
-        if(gameObject.GetComponent<SpriteRenderer>().sprite == gunPowerUp && Input.GetKeyDown(KeyCode.W))
-            Instantiate(projectile,firePoint.position,firePoint.rotation);
 
         if(Input.GetKey(KeyCode.D))
         {
@@ -130,13 +128,28 @@ public class FishControl:MonoBehaviour
     }
     public IEnumerator BubbleGun()
     {
+        Fire();
 
-
-        projectile = Resources.Load("Assets/Prefabs/Bubble Gun Ammo.prefab") as GameObject;
-       
-        yield return new WaitForSeconds(20f);
-
-        Instantiate("Assets / Prefabs / Bubble Gun Ammo.prefab");
+        yield return new WaitForSeconds(18f);
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = gunPowerUp;
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = gunPowerUp;
+        yield return new WaitForSeconds(.5f);
+
+        //  Instantiate("Assets / Prefabs / Bubble Gun Ammo.prefab");
+        gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+    }
+
+    private void Fire()
+    {
+        if(Input.GetKey(KeyCode.W))
+        {
+            GameObject projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(0,projectileSpeed);
+        }
     }
 }
