@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 
     public int levelToLoad;
 
-	// Use this for initialization
+	// Load game from main menu
 	public void EnterLevel() {
         SceneManager.LoadScene("Game");
 	}

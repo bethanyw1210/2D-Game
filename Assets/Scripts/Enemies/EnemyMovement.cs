@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour {
     public float speed = 5f;
     private bool flipX = false;
 
+
+    //Delay between enemy starts
     int counter,randomDelay;
     private void Start()
     {
@@ -50,6 +52,8 @@ public class EnemyMovement : MonoBehaviour {
             }
         }*/
     }
+
+    //move enemy from side to side
     private void MoveDude()
     {
         if(dirRight)

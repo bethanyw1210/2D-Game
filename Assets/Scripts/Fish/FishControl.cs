@@ -8,7 +8,7 @@ public class FishControl:MonoBehaviour
     private float moveSpeed = 5;
     private int jumpHeight = 15;
     public GameObject player;
-    private bool flipX = false;
+    private bool flipX = false, canFire = true;
     private bool grounded = true;
     public Sprite FishCharacter, turtlePowerup, gunPowerUp;
     private Rigidbody2D pcRigid;
@@ -16,6 +16,7 @@ public class FishControl:MonoBehaviour
     public Transform firePoint;
     public GameObject projectile;
     public float projectileSpeed = 10f;
+    private float counter;
 
     // Use this for initialization 
     void Start()
@@ -29,22 +30,26 @@ public class FishControl:MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
+        //move Sea Turtle up
         if(gameObject.GetComponent<SpriteRenderer>().sprite == turtlePowerup)
         {
             Moverupper();
         }
 
+        //Fishie Controls
         if(Input.GetKey(KeyCode.D))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
-            GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.transform.localScale = new Vector3(-1,1,1);
         }
 
         if(Input.GetKey(KeyCode.A))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
-            GetComponent<SpriteRenderer>().flipX = false;
+            gameObject.transform.localScale = new Vector3(1,1,1);
         }
+
+        //Make fishie jump
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             if(gameObject.GetComponent<SpriteRenderer>().sprite == turtlePowerup)
@@ -55,7 +60,25 @@ public class FishControl:MonoBehaviour
                 grounded = false;
             }
         }
+
+        //Press W to use gun
+        if(gameObject.GetComponent<SpriteRenderer>().sprite == gunPowerUp)
+        {
+            counter++;
+            if(Input.GetKey(KeyCode.W)&&counter > 25)
+            {
+              
+                projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
+                if(gameObject.transform.localScale.x<0)
+                projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,0);
+                else projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-projectileSpeed,0);
+                //Fire();
+                counter = 0;
+            }
+        }
     }
+
+    //Fish can jump off of Jellies and ground
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag == ("Ground"))
@@ -69,6 +92,7 @@ public class FishControl:MonoBehaviour
         
     }
 
+    //Have fish sprite cahnge to Powerup sprite
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "BubbleGun")
@@ -86,6 +110,7 @@ public class FishControl:MonoBehaviour
         }
     }
 
+    //Code to make Sea Turtle work
     public IEnumerator SeaTurtle()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled=false;
@@ -111,6 +136,8 @@ public class FishControl:MonoBehaviour
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
     }
+
+    //makes Sea Turtle move up and enemies don't affect it
     public void Moverupper()
     {
         if(GameObject.FindGameObjectWithTag("MainCamera").transform.position.y > gameObject.transform.position.y)
@@ -126,12 +153,15 @@ public class FishControl:MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x -.5f,gameObject.GetComponent<Rigidbody2D>().velocity.y,0);
         }
     }
+
+    //Make Bubble gun shoot
     public IEnumerator BubbleGun()
     {
-        Fire();
+        //Fire();
 
         yield return new WaitForSeconds(18f);
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        Update();
         yield return new WaitForSeconds(.5f);
         gameObject.GetComponent<SpriteRenderer>().sprite = gunPowerUp;
         yield return new WaitForSeconds(.5f);
@@ -142,14 +172,15 @@ public class FishControl:MonoBehaviour
 
         //  Instantiate("Assets / Prefabs / Bubble Gun Ammo.prefab");
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        Update();
     }
 
-    private void Fire()
+    /*private IEnumerator Fire()
     {
-        if(Input.GetKey(KeyCode.W))
-        {
-            GameObject projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(0,projectileSpeed);
-        }
-    }
+
+        
+        yield return new WaitForSeconds(1f);
+        canFire = true;
+
+    }*/
 }

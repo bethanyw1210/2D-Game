@@ -31,6 +31,7 @@ public class KillPlayer : MonoBehaviour {
         }
 	}
 
+    //Kill and respawn player
     IEnumerator Dead()
     {
         Debug.Log("Dead");

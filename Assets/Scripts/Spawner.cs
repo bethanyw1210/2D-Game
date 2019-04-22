@@ -19,7 +19,7 @@ using UnityEngine;
         edgeDistance = Camera.main.orthographicSize*.8f;
         }
 
-        // JellySpawner
+        //Tell the Jellies  where to spawn 
         void Update()
         {
             if(gameObject.transform.position.y - 10 < GameObject.FindGameObjectWithTag("MainCamera").transform.position.y)
@@ -33,7 +33,9 @@ using UnityEngine;
 
             }
         }
-        public void BringOnTheJellies()
+
+    //Spawn the Jellies
+    public void BringOnTheJellies()
         {
             do
             {
@@ -50,6 +52,7 @@ using UnityEngine;
                         jellyfishToMake = jellyfish3;
                         break;
                 }
+            //Soawn enemies and Powerups
             whichBadGuy = Random.Range(1,30);
             switch(whichBadGuy)
             {
@@ -79,6 +82,7 @@ using UnityEngine;
                     break;*/
                 case 6:
                     enemyToMake = GameObject.Find("Powerup Bubble Gun");
+
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
                     break;
                 case 7:
@@ -86,6 +90,8 @@ using UnityEngine;
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
                     break;
             }
+
+            //Tell Jellies where to spawn
             if(!(edgeDistance < lastXPosition) && !(-edgeDistance > lastXPosition))
                 {
                     GameObject newJellyfish = Instantiate(jellyfishToMake,new Vector2(lastXPosition + Random.Range(0f,8f),lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);
