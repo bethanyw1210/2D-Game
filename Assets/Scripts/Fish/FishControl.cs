@@ -34,6 +34,7 @@ public class FishControl:MonoBehaviour
         if(gameObject.GetComponent<SpriteRenderer>().sprite == turtlePowerup)
         {
             Moverupper();
+            
         }
 
         //Fishie Controls
@@ -72,6 +73,26 @@ public class FishControl:MonoBehaviour
                 if(gameObject.transform.localScale.x<0)
                 projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,0);
                 else projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-projectileSpeed,0);
+
+                projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
+                if(gameObject.transform.localScale.x < 0)
+                    projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,1f);
+                else projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-projectileSpeed,1f);
+
+                projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
+                if(gameObject.transform.localScale.x < 0)
+                    projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,2f);
+                else projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-projectileSpeed,2f);
+
+                projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
+                if(gameObject.transform.localScale.x < 0)
+                    projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,-1f);
+                else projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-projectileSpeed,-1f);
+
+                projectile = Instantiate(projectile,transform.position,transform.rotation) as GameObject;
+                if(gameObject.transform.localScale.x < 0)
+                    projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed,-2f);
+                else projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(-projectileSpeed,-2f);
                 //Fire();
                 counter = 0;
             }
@@ -120,6 +141,7 @@ public class FishControl:MonoBehaviour
 
         yield return new WaitForSeconds(8f);
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+
         yield return new WaitForSeconds(.5f);
         gameObject.GetComponent<SpriteRenderer>().sprite = turtlePowerup;
         yield return new WaitForSeconds(.5f);
@@ -127,14 +149,18 @@ public class FishControl:MonoBehaviour
         yield return new WaitForSeconds(.5f);
         gameObject.GetComponent<SpriteRenderer>().sprite = turtlePowerup;
         yield return new WaitForSeconds(.5f);
+
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        Moveup();
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
         pcRigid.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
+        Moveup();
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
         gameObject.GetComponent<SpriteRenderer>().sprite = FishCharacter;
+        Moveup();
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
-
+        
     }
 
     //makes Sea Turtle move up and enemies don't affect it
@@ -142,8 +168,16 @@ public class FishControl:MonoBehaviour
     {
         if(GameObject.FindGameObjectWithTag("MainCamera").transform.position.y > gameObject.transform.position.y)
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + .25f,0);
-        else
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y-.01f,0);
+        /*else if 
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y/2,0);
+        */
+        if(gameObject.GetComponent<Rigidbody2D>().velocity.y<0)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y+1,0);
+            
+
+        }
+
         if(GameObject.FindGameObjectWithTag("MainCamera").transform.position.x > gameObject.transform.position.x+5)
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x+.5f,gameObject.GetComponent<Rigidbody2D>().velocity.y,0);
@@ -152,6 +186,11 @@ public class FishControl:MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x -.5f,gameObject.GetComponent<Rigidbody2D>().velocity.y,0);
         }
+        
+    }
+    public void Moveup()
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(gameObject.GetComponent<Rigidbody2D>().velocity.x,gameObject.GetComponent<Rigidbody2D>().velocity.y + 3f,0);
     }
 
     //Make Bubble gun shoot

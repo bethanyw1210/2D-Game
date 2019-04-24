@@ -76,6 +76,10 @@ using UnityEngine;
                     enemyToMake = GameObject.Find("Powerup Turtle");
                     Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
                     break;
+                case 5:
+                    enemyToMake = GameObject.Find("Coin");
+                    Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
+                    break;
                 /*case 5:
                     enemyToMake = GameObject.Find("Powerup School");
                     Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
@@ -87,6 +91,10 @@ using UnityEngine;
                     break;
                 case 7:
                     enemyToMake = GameObject.Find("Powerup Turtle");
+                    Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
+                    break;
+                case 8:
+                    enemyToMake = GameObject.Find("Coin");
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
                     break;
             }

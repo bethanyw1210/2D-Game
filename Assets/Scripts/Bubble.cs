@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour {
-    public float speed;
-    public float timeOut = 4f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +16,9 @@ public class Bubble : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.collider.tag == "Enemy")
+        if(other.tag == "Enemy")
         {
             Destroy(other.gameObject);
         }
