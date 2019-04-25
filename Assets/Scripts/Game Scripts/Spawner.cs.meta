@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 64e5b439febe4984196ea6920ad68745
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - jellyfish1: {fileID: 1854951755579226, guid: 7c635ab939a7ee74ea3f4532f6369b22,
+      type: 2}
+  - jellyfish2: {fileID: 1947584952490468, guid: 0470c7b55b75efe4e878947087995af3,
+      type: 2}
+  - jellyfish3: {fileID: 1067141184858208, guid: a612cf41109870148affc4d8f0e5100c,
+      type: 2}
+  - jellyfishToMake: {fileID: 1350083392751486, guid: 131e0b6be6fcc78429000077b1541126,
+      type: 2}
+  - enemyToMake: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

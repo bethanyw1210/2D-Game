@@ -1809,11 +1809,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b120e7491d7d3042bea643de692bbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1647981790}
+  rend: {fileID: 1647981794}
   life1: {fileID: 693452994}
   life2: {fileID: 819127579}
   life3: {fileID: 1311401272}
-  player: {fileID: 1647981790}
-  rend: {fileID: 1647981794}
 --- !u!1001 &1668129363
 Prefab:
   m_ObjectHideFlags: 0
