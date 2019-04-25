@@ -16,11 +16,11 @@ public class CleanUpScript : MonoBehaviour {
         print(other.tag);
         }*/
 
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if(FindGameObjectWithLayer("Kill"))
         {
             Destroy(gameObject);
         }
-    }
+    }*/
     }

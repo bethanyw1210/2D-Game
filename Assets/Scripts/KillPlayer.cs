@@ -12,9 +12,11 @@ public class KillPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rend = gameObject.GetComponent<SpriteRenderer>();
+        //livesText = GetComponent<Text>();
+        //Lives = 3;
 
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void OnTriggerEnter2D (Collider2D other) {
@@ -32,7 +34,22 @@ public class KillPlayer : MonoBehaviour {
                 SceneManager.LoadScene("MainMenu");
             }
         }
-	}
+
+        if(other.tag == "Kill")
+        {
+            if(lives > 0)
+            {
+                StartCoroutine(Dead());
+                lives--;
+                //Destroy(gameObject);
+            }
+            else if(lives == 0)
+            {
+                //yield return new WaitForSeconds(3f);
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+    }
 
     //Kill and respawn player
     IEnumerator Dead()

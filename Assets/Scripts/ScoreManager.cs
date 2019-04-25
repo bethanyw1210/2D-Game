@@ -16,8 +16,8 @@ public class ScoreManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(coins < 0)
-            coins = 0;
+        //if(coins < 0)
+            //coins = 0;
 
         coinText.text = " " + coins;
 	}
