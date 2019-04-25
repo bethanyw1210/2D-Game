@@ -11,7 +11,8 @@ public class ScoreManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         coinText = GetComponent<Text>();
-        coins = 0;	
+        coins = 0;
+
 	}
 	
 	// Update is called once per frame
@@ -25,4 +26,5 @@ public class ScoreManager : MonoBehaviour {
     {
         coins += pointsToAdd;
     }
+
 }

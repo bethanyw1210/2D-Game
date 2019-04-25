@@ -12,8 +12,6 @@ public class KillPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rend = gameObject.GetComponent<SpriteRenderer>();
-        //livesText = GetComponent<Text>();
-        //Lives = 3;
 
 
     }
