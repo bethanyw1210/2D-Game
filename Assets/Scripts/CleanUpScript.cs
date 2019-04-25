@@ -5,7 +5,7 @@ using UnityEngine;
 public class CleanUpScript : MonoBehaviour {
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Fish")
         {
@@ -14,5 +14,13 @@ public class CleanUpScript : MonoBehaviour {
         else
             Destroy(other.gameObject);
         print(other.tag);
+        }*/
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(FindGameObjectWithLayer("Kill"))
+        {
+            Destroy(gameObject);
         }
+    }
     }

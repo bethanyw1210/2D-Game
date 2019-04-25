@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114540835897002694}
   - component: {fileID: 61741477414577630}
   - component: {fileID: 58572045370814922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Jellyfish-Pink
   m_TagString: Jellyfish
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947584952490468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.37, y: -12.87, z: 0}
+  m_LocalPosition: {x: -27.394753, y: -8.172731, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.010222495, y: 1.6260638}
