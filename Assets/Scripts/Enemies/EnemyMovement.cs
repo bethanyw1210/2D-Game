@@ -25,32 +25,6 @@ public class EnemyMovement : MonoBehaviour {
         MoveDude();
         else
             counter++;
-
-        /*[SerializeField] float swimSpeed = 8f;
-        public bool moveRight;
-        public Transform wallCheck;
-        public float wallCheckRadius;
-        public LayerMask whatIsWall;
-        private bool hittingWall;
-        private bool notAtEdge;
-        public Transform edgeCheck;
-        // Update is called once per frame
-        void Update () {
-            notAtEdge = Physics2D.OverlapCircle(edgeCheck.position,wallCheckRadius,whatIsWall);
-            hittingWall = Physics2D.OverlapCircle(wallCheck.position,wallCheckRadius,whatIsWall);
-            if(hittingWall || !notAtEdge)
-            {
-                moveRight = !moveRight;
-            }
-            if(moveRight)
-            {
-            transform.Translate(Vector2.right * swimSpeed * Time.deltaTime);
-            }
-            else
-            {
-            transform.Translate(Vector2.left * swimSpeed * Time.deltaTime);
-            }
-        }*/
     }
 
     //move enemy from side to side
@@ -79,7 +53,8 @@ public class EnemyMovement : MonoBehaviour {
         {
             print(other.tag);
         }
-        else { 
+        else {
+            //KillPlayer.life -= 1;
             Destroy(other.gameObject);
         print(other.tag);
         }

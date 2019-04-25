@@ -53,18 +53,18 @@ using UnityEngine;
                         break;
                 }
             //Soawn enemies and Powerups
-            whichBadGuy = Random.Range(1,30);
+            whichBadGuy = Random.Range(1,40);
             switch(whichBadGuy)
             {
                 case 9:
                 case 10:
-                case 11:
+                //case 11:
                     enemyToMake = GameObject.Find("Shark");
                     Instantiate(enemyToMake,new Vector2(-18,lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);
                     break;
                 case 16:
                 case 17:
-                case 18:
+                //case 18:
                     enemyToMake = GameObject.Find("Swordfish");
                     Instantiate(enemyToMake,new Vector2(-18,lastYPosition + Random.Range(3f,5f)),gameObject.transform.rotation);
                     break;
@@ -77,6 +77,10 @@ using UnityEngine;
                     Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
                     break;
                 case 5:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
                     enemyToMake = GameObject.Find("Coin");
                     Instantiate(enemyToMake,new Vector2(lastXPosition,lastYPosition + 2),gameObject.transform.rotation);
                     break;
@@ -94,6 +98,10 @@ using UnityEngine;
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
                     break;
                 case 8:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
                     enemyToMake = GameObject.Find("Coin");
                     Instantiate(enemyToMake,new Vector2(lastXPosition2,lastYPosition2 + 2),gameObject.transform.rotation);
                     break;

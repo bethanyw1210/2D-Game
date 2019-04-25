@@ -15,5 +15,19 @@ public class Coin : MonoBehaviour {
         ScoreManager.AddPoints(coinValue);
 
         Destroy(gameObject);
+
+        /*if(GameObject.Find("TurtlePowerup"))
+            print("You've collected a coin!");
+
+        ScoreManager.AddPoints(coinValue);
+
+        Destroy(gameObject);
+
+        if(GameObject.Find("BubbleGunPowerup"))
+            print("You've collected a coin!");
+
+        ScoreManager.AddPoints(coinValue);
+
+        Destroy(gameObject);*/
     }
 }

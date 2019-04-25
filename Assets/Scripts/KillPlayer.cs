@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour {
 
-    private int lives = 3;
+    public GameObject life1, life2, life3;
+    //private bool life;
+    private int lives;
     public GameObject player;
     public Renderer rend;
 
@@ -13,8 +15,14 @@ public class KillPlayer : MonoBehaviour {
 	void Start () {
         rend = gameObject.GetComponent<SpriteRenderer>();
 
+        lives = 3;
+        life1.gameObject.SetActive(true);
+        life2.gameObject.SetActive(true);
+        life3.gameObject.SetActive(true);
+
 
     }
+
 	
 	// Update is called once per frame
 	void OnTriggerEnter2D (Collider2D other) {
@@ -52,6 +60,63 @@ public class KillPlayer : MonoBehaviour {
     //Kill and respawn player
     IEnumerator Dead()
     {
+        if(lives < 3)
+            //life = 3;
+        switch(lives)
+        {
+            case 2:
+                life1.gameObject.SetActive(true);
+                life1.gameObject.SetActive(true);
+                life1.gameObject.SetActive(false);
+                break;
+
+            case 1:
+                life1.gameObject.SetActive(true);
+                life1.gameObject.SetActive(false);
+                life1.gameObject.SetActive(false);
+                break;
+
+            case 0:
+                life1.gameObject.SetActive(false);
+                life1.gameObject.SetActive(false);
+                life1.gameObject.SetActive(false);
+                break;
+
+            /*case 0:
+                life1.gameObject.SetActive(false);
+                life1.gameObject.SetActive(false);
+                life1.gameObject.SetActive(false);
+                break;*/
+        }
+
+        /*if(life = 3)
+        {
+            life1.gameObject.SetActive(true);
+            life1.gameObject.SetActive(true);
+            life1.gameObject.SetActive(true);
+        }
+
+        if(life = 2)
+        {
+            life1.gameObject.SetActive(false);
+            life1.gameObject.SetActive(true);
+            life1.gameObject.SetActive(true);
+        }
+
+        if(life = 1)
+        {
+            life1.gameObject.SetActive(false);
+            life1.gameObject.SetActive(false);
+            life1.gameObject.SetActive(true);
+        }
+
+        if(life = 0)
+        {
+            life1.gameObject.SetActive(false);
+            life1.gameObject.SetActive(false);
+            life1.gameObject.SetActive(false);
+        }*/
+
         Debug.Log("Dead");
         rend.enabled = false;
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
