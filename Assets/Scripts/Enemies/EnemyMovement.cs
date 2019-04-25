@@ -73,5 +73,15 @@ public class EnemyMovement : MonoBehaviour {
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
-   
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Fish")
+        {
+            print(other.tag);
+        }
+        else { 
+            Destroy(other.gameObject);
+        print(other.tag);
+        }
+    }
 }

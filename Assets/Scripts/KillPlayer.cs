@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour {
 
-    public int lives = 1;
+    private int lives = 3;
     public GameObject player;
     public Renderer rend;
 
@@ -23,9 +23,12 @@ public class KillPlayer : MonoBehaviour {
             if (lives > 0)
             {
                 StartCoroutine(Dead());
+                lives--;
+                //Destroy(gameObject);
             }
             else if (lives == 0)
             {
+                //yield return new WaitForSeconds(3f);
                 SceneManager.LoadScene("MainMenu");
             }
         }

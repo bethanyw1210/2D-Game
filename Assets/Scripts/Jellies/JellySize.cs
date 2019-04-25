@@ -63,9 +63,14 @@ public class JellySize : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        if(collision.tag == "Kill")
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
     }
-}
+
+    }
