@@ -15,6 +15,7 @@ public class KillPlayer : MonoBehaviour {
     void Start () {
         rend = gameObject.GetComponent<SpriteRenderer>();
 
+
         life1.gameObject.SetActive(true);
         life2.gameObject.SetActive(true);
         life3.gameObject.SetActive(true);
@@ -34,7 +35,7 @@ public class KillPlayer : MonoBehaviour {
             else if (lives == 0)
             {
                 //yield return new WaitForSeconds(3f);
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("GameOver");
             }
         }
 
@@ -49,9 +50,39 @@ public class KillPlayer : MonoBehaviour {
             else if(lives == 0)
             {
                 //yield return new WaitForSeconds(3f);
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("GameOver");
             }
         }
+        print(lives);
+            switch(lives)
+            {
+                case 3:
+                    life1.gameObject.SetActive(true);
+                    life2.gameObject.SetActive(true);
+                    life3.gameObject.SetActive(true);
+                    break;
+
+                case 2:
+                    life1.gameObject.SetActive(true);
+                    life2.gameObject.SetActive(true);
+                    life3.gameObject.SetActive(false);
+                    break;
+
+                case 1:
+                    life1.gameObject.SetActive(true);
+                    life2.gameObject.SetActive(false);
+                    life3.gameObject.SetActive(false);
+                    break;
+
+                case 0:
+                    life1.gameObject.SetActive(false);
+                    life2.gameObject.SetActive(false);
+                    life3.gameObject.SetActive(false);
+                    break;
+
+
+            }
+
     }
 
     //Kill and respawn player
@@ -59,35 +90,7 @@ public class KillPlayer : MonoBehaviour {
     {
         if(lives < 3)
             //lives = 3;
-            switch(lives)
-            {
-                case 3:
-                    life1.gameObject.SetActive(true);
-                    life1.gameObject.SetActive(true);
-                    life1.gameObject.SetActive(true);
-                    break;
-
-                case 2:
-                    life1.gameObject.SetActive(true);
-                    life1.gameObject.SetActive(true);
-                    life1.gameObject.SetActive(false);
-                    break;
-
-                case 1:
-                    life1.gameObject.SetActive(true);
-                    life1.gameObject.SetActive(false);
-                    life1.gameObject.SetActive(false);
-                    break;
-
-                case 0:
-                    life1.gameObject.SetActive(false);
-                    life1.gameObject.SetActive(false);
-                    life1.gameObject.SetActive(false);
-                    break;
-
-
-            }
-
+            
         Debug.Log("Dead");
         rend.enabled = false;
         gameObject.GetComponent<BoxCollider2D>().isTrigger = true;

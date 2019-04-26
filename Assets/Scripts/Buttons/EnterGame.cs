@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class EnterGame : MonoBehaviour {
 
-	// Load game from main menu
-	public void EnterGame() {
+    public void Game()
+    {
         SceneManager.LoadScene("Game");
-	}
+    }
 }
